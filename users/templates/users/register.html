@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+ {% block content %}
+<div class="d-flex flex-column justify-content-center align-items-center" style="min-height:90vh;" >
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            {{ form.errors }}
+        </div>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+
+        <fieldset class="form-group" > 
+            <legend> Register </legend>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    {{ form.first_name|as_crispy_field }}
+                </div>
+                <div class="col-6">
+                    {{ form.last_name|as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    {{ form.email|as_crispy_field }}
+                </div>
+                <div class="col-6">
+                    {{ form.phone_number|as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    {{ form.user_type|as_crispy_field }}
+                </div>
+                <div class="col-6">
+                    {{ form.birth_date|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                </div>
+                <div class="col-6">
+                    <span></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    {{ form.password1|as_crispy_field }}
+                    <small class="text-left text-break w-75" >
+                        <li class="w-75 " >Your password can’t be too similar to your other personal information. </li>
+                        <li class="w-75 " > Your password must contain at least 8 characters.</li>
+                        <li class="w-75 " >Your password can’t be a commonly used password.</li>
+                        <li class="w-75 " >Your password can’t be entirely numeric.</li>
+                    </small>
+                </div>
+                <div class="col-6">
+                    {{ form.password2|as_crispy_field }}
+                    <small class="text-left" >
+                        Enter the same password as before, for verification.
+                    </small>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-info" > Sign up </button>
+        </div>
+    </form>
+
+    <div class="border-top pt-3" >
+        <small class="text-muted" > Already have an account? <a class="ml-2" href="{% url 'login'  %}" >Sign In </a>  </small>
+    <div>
+</div>
+    
+
+{%endblock content %}

@@ -1,0 +1,25 @@
+{% extends "sis/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ user.username }}</h2>
+          <p class="text-secondary">{{ user.email }}</p>
+        </div>
+      </div>
+      {% comment %} exctype="multipart/form-data" to save the image {% endcomment %}
+      <form method="POST" exctype="multipart/form-data" >
+        {% csrf_token %}
+
+        <fieldset class="form-group" > 
+            {{ userUpdateForm|crispy }}
+            {{ profileUpdateForm|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-secondary" > Update </button>
+        </div>
+      </form>
+    </div>
+{% endblock content %}
