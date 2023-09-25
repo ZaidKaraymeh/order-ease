@@ -10,7 +10,7 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ['-created_at', '-updated_at']
+        ordering = ['-created_at']
 
 class Restaurant(BaseModel):
     images = models.ManyToManyField('ItemImage')
@@ -20,7 +20,7 @@ class Restaurant(BaseModel):
     address = models.TextField()
     phone = models.CharField(max_length=30)
     rating = models.DecimalField( max_digits=2, decimal_places=1)
-    website = models.CharField()
+    website = models.CharField(max_length=150)
     email = models.EmailField()
     opening_time = models.TimeField()
     closing_time = models.TimeField()
@@ -32,6 +32,7 @@ class Category(BaseModel):
     name = models.CharField(max_length=100)
     description = models.TextField()
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    is_enabled = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -92,7 +93,7 @@ class Discount(BaseModel):
         PERCENT = 'PERCENT'
         AMOUNT = 'AMOUNT'
 
-    discount_type = models.CharField(choices=DiscountType.choices)
+    discount_type = models.CharField(max_length=150, choices=DiscountType.choices)
     discount = models.DecimalField(max_digits=6, decimal_places=3)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
 
@@ -110,9 +111,9 @@ class Basket(BaseModel):
         USER = 'USER'
         GUEST = 'GUEST'
 
-    user_type = models.CharField(choices=UserType.choices)
+    user_type = models.CharField(max_length=150, choices=UserType.choices)
 
-    status = models.CharField(choices=Status.choices)
+    status = models.CharField(max_length=150, choices=Status.choices)
     items = models.ManyToManyField('Item')
     user = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE)
     discount = models.ForeignKey('Discount', on_delete=models.CASCADE)
@@ -130,7 +131,7 @@ class Order(BaseModel):
         COMPLETED = 'COMPLETED'
         CANCELLED = 'CANCELLED'
 
-    status = models.CharField(choices=Status.choices)
+    status = models.CharField(max_length=150, choices=Status.choices)
     basket = models.ForeignKey(Basket, on_delete=models.CASCADE)
     restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
     user = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE)
@@ -147,7 +148,7 @@ class Transaction(BaseModel):
         COMPLETED = 'COMPLETED'
         CANCELLED = 'CANCELLED'
 
-    status = models.CharField(choices=Status.choices)
+    status = models.CharField(max_length=150, choices=Status.choices)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     user = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=6, decimal_places=3)
@@ -162,7 +163,23 @@ class PaymentOption(BaseModel):
         CARD = 'CARD'
         CASH = 'CASH'
 
-    payment_type = models.CharField(choices=PaymentType.choices)
+    payment_type = models.CharField(max_length=150, choices=PaymentType.choices)
 
     def __str__(self):
         return self.payment_type
+    
+class Colors(BaseModel):
+
+    restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
+
+    primary = models.CharField(max_length=7)
+    secondary = models.CharField(max_length=7)
+    info = models.CharField(max_length=7)
+    success = models.CharField(max_length=7)
+    warning = models.CharField(max_length=7)
+    danger = models.CharField(max_length=7)
+    default = models.CharField(max_length=7)
+    text = models.CharField(max_length=7)
+
+    def __str__(self):
+        return self.name
