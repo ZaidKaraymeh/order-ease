@@ -7,3 +7,6 @@ def home(request):
 
 def search(request):
     return render(request, "home.html")
+
+def resturant(request):
+    return render(request, "resturant.html")
