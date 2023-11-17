@@ -10,6 +10,7 @@ admin.site.register(models.Restaurant)
 admin.site.register(models.Review)
 admin.site.register(models.SubAddOn)
 admin.site.register(models.Order)
+admin.site.register(models.RestaurantCategory)
 
 
 

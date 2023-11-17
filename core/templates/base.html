@@ -23,20 +23,23 @@
     />
   </head>
   <body>
-      <!-- Header -->
-      <nav class="navbar navbar-light bg-light">
-        <h2 class="navbar-brand mb-0 ms-4">Order Ease</h2>
-      </nav>
-      <!-- Content -->
-      <div class="container-fluid">
-        <div id="page-home" class="active">
-          <h1>Home</h1>
-          <div class="block">
+    <!-- Header -->
+    <nav class="navbar fixed-top navbar-light bg-light">
+      <h2 class="navbar-brand mb-0">Order Ease</h2>
+    </nav>
+    <!-- Content -->
+    <div class="container-fluid">
+      <div id="page-home" class="active">
+        {% block content %}
+        
+        {% comment %} <h1>Home</h1>
+        <div class="block">
             <h2>Title</h2>
             Description
-          </div>
-        </div>
+        </div> {% endcomment %}
+        {% endblock content %}
       </div>
+    </div>
 
       <!-- Footer Navbar -->
       <footer class="footer fixed-bottom mx-auto">
