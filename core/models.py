@@ -15,6 +15,7 @@ class BaseModel(models.Model):
 class Restaurant(BaseModel):
     images = models.ManyToManyField('ItemImage')
     user = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE)
+    restaurant_category = models.ForeignKey("core.RestaurantCategory", on_delete=models.CASCADE, null=True)
 
     name = models.CharField(max_length=100)
     address = models.TextField()
@@ -33,6 +34,14 @@ class Category(BaseModel):
     description = models.TextField()
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
     is_enabled = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+    
+class RestaurantCategory(BaseModel):
+    name = models.CharField(max_length=100)
+    icon = models.CharField(max_length=100, null=True)
+    is_enabled = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name

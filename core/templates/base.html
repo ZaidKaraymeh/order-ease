@@ -14,26 +14,70 @@
     />
     <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'main.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
-  <body class="p-0 m-0">
+  <body>
+    <!-- Header -->
+    <nav class="navbar fixed-top navbar-light bg-light">
+      <h2 class="navbar-brand mb-0">Order Ease</h2>
+    </nav>
+    <!-- Content -->
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-xl-3 col-xs-12"></div>
-        <div class="col-xl-6 col-xs-12 p-0 m-0">
-          <main class="vh-100 bg-light pb-5 p-0 m-0">
-            {% block content %} {% endblock content %}
-          </main>
-          <footer class="bottom-bar bg-primary text-white">
-            <div class="row">
-              <div class="col-4 text-center">Home</div>
-              <div class="col-4 text-center">Search</div>
-              <div class="col-4 text-center">Account</div>
-            </div>
-          </footer>
-        </div>
-        <div class="col-xl-3 col-xs-12"></div>
+      <div id="page-home" class="active">
+        {% block content %}
+        
+        {% comment %} <h1>Home</h1>
+        <div class="block">
+            <h2>Title</h2>
+            Description
+        </div> {% endcomment %}
+        {% endblock content %}
       </div>
     </div>
+
+    <!-- Footer Navbar -->
+    <footer class="footer">
+      <div
+        id="buttonGroup"
+        class="btn-group selectors"
+        role="group"
+        aria-label="Basic example"
+      >
+        <button id="home" type="button" class="btn btn-secondary button-active">
+          <div class="selector-holder">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </div>
+        </button>
+        <button
+          id="search"
+          type="button"
+          class="btn btn-secondary button-inactive"
+        >
+          <div class="selector-holder">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search</span>
+          </div>
+        </button>
+        <button
+          id="account"
+          type="button"
+          class="btn btn-secondary button-inactive"
+        >
+          <div class="selector-holder">
+            <i class="fa-solid fa-user"></i>
+            <span>Account</span>
+          </div>
+        </button>
+      </div>
+    </footer>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
