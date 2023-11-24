@@ -46,34 +46,33 @@
         id="buttonGroup"
         class="btn-group selectors"
         role="group"
-        aria-label="Basic example"
       >
-        <button id="home" type="button" class="btn btn-secondary button-active">
+        <a href="{% url "home" %}" id="home" class="btn btn-light{% if request.get_full_path == "/home/" %} button-active{% else %} button-inactive{% endif %}">
           <div class="selector-holder">
             <i class="fa-solid fa-house"></i>
             <span>Home</span>
           </div>
-        </button>
-        <button
+        </a>
+        <a
+          href="{% url "search" %}"
           id="search"
-          type="button"
-          class="btn btn-secondary button-inactive"
+          class="btn btn-light{% if request.get_full_path == "/search/" %} button-active{% else %} button-inactive{% endif %}"
         >
           <div class="selector-holder">
             <i class="fa-solid fa-magnifying-glass"></i>
             <span>Search</span>
           </div>
-        </button>
-        <button
+        </a>
+        <a
+          {% comment %} href="{% url "account" %}" {% endcomment %}
           id="account"
-          type="button"
-          class="btn btn-secondary button-inactive"
+          class="btn btn-light{% if request.get_full_path == "/account/" %} button-active{% else %} button-inactive{% endif %}"
         >
           <div class="selector-holder">
             <i class="fa-solid fa-user"></i>
             <span>Account</span>
           </div>
-        </button>
+        </a>
       </div>
     </footer>
 

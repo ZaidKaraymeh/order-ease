@@ -65,11 +65,8 @@ body {
   font-size: 0.8rem;
 }
 
-.button-active,
-.selectors button:hover,
-.selectors button:active,
-.selectors button:focus {
-  color: #ff0000;
+.button-active {
+  color: #ff7b00;
 }
 
 .button-inactive {
