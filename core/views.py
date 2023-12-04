@@ -17,3 +17,10 @@ def search(request):
 
 def resturant(request):
     return render(request, "resturant.html")
+
+def item(request):
+    """
+    To add restaurant_id in parameter, can be viewed from restaurant page
+    """
+    
+    return render(request, "item.html")
