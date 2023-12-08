@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-79p%xmb!mmww2s_q-7xy^na=x5!824hm#ta8!n^n(4sv^xflo%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.100.12', 'karay.local', '192.168.100.1']
 LOGIN_REDIRECT_URL = "/"
 
 # Application definition

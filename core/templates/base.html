@@ -21,6 +21,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
     <!-- Header -->
@@ -28,30 +29,30 @@
     <div class="container-fluiid h-100">
       <div class="row">
 
-        <div class="col-xs-12 col-lg-4 bg-dark vh-100"  ></div>
+        <div class="d-none d-sm-block col-xs-0 col-lg-4 bg-dark vh-100"  ></div>
         <div class="col-xs-12 col-lg-4 p-0" style="height: 90vh; box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;">
-          <div class="container-fluid mb-auto h-100 p-0" style="overflow-x: hidden !important;">
+          <div class="container-fluid mb-auto h-100 p-0" style="overflow-y: hidden; overflow-x: hidden !important;">
             
-            <div id="page-home" class="active h-100" style="overflow-y: scroll; overflow-x: hidden;">
+            <div id="page-home" class="active h-100" style="overflow-y: hidden; overflow-x: hidden;">
               {% block content %} {% endblock content %}
             </div>
           </div>
           
           <!-- Footer Navbar -->
-          <footer class="footer  w-100 mx-auto ">
+          <footer class="footer  w-100  ">
             <div
             id="buttonGroup"
             class="btn-group selectors"
             role="group"
             >
-            <a href="{% url "home" %}" id="home" class="btn btn-light{% if request.get_full_path == "/home/" %} button-active{% else %} button-inactive{% endif %}">
+            <a href="{% url 'home' %}" id="home" class="btn btn-light{% if request.get_full_path == "/home/" %} button-active{% else %} button-inactive{% endif %}">
               <div class="selector-holder">
                 <i class="fa-solid fa-house"></i>
                 <span>Home</span>
               </div>
             </a>
             <a
-            href="{% url "search" %}"
+            href="{% url 'search' %}"
             id="search"
             class="btn btn-light{% if request.get_full_path == "/search/" %} button-active{% else %} button-inactive{% endif %}"
             >
@@ -74,7 +75,7 @@
     </footer>
     
   </div>
-  <div class="col-xs-12 col-lg-4 bg-dark vh-100"></div>
+  <div class=" d-none d-sm-block col-xs-12  col-lg-4 bg-dark vh-100"></div>
 </div>
 </div>
 

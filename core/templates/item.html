@@ -1,11 +1,29 @@
 {% extends "base.html" %} {% block content %} {% load static %}
 
 <div class="card h-100" >
-  <img style="height: 300px;" src="{% static 'images/carousel1.jpg' %}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+  <div>
+    <img style="height: 300px;" src="{% static 'images/carousel1.jpg' %}" class="card-img-top" alt="...">
+    <span style="position: relative; top: -87%; left: 10px;" >
+      <a href="#">
+        <i class="fa-solid fa-circle-left fa-2xl"></i>
+
+    </a>
+  </span>
+  </div>
+  <div class="card-body pt-0">
+    <section>
+      <h3 class="card-title">Traditional Club</h3>
+      <p class="card-text">Chicken, Turkey, Egg, Tomato, Lettuce, Cheese and Mayonnaise. Served with Fries and a Side Salad.</p>
+      <p class="fs-5" ><span class="badge bg-primary">BD 4.350</span> </p>
+    </section>
+    <section class=" py-3" >
+      <!-- <h5>Your Choice For The Side Drink <span class="ms-5 badge bg-info justify-self-end" > Required </span> </h5> -->
+      <div class="mb-3">
+        <label for="Comment" class="form-label">Comment</label>
+        <textarea class="form-control" id="Comment" placeholder="Any special order you would like to mention?" rows="3"></textarea>
+      </div>
+    </section>
+    <a href="#" class="btn btn-primary d-block">Add to basket <span class="me-auto" >BD 4.350 </span></a>
   </div>
 </div>
 
